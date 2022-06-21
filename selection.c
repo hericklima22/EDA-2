@@ -6,24 +6,33 @@ typedef int Item;
 #define exch(A,B) { Item t; t=A;A=B;B=t; }
 #define cmpexch(A,B) { if (less(B,A)) exch(A,B); }
 
-void selection() {
-  
+void selection(Item *arr, int length) {
+  int min;
+  for(int i = 0; i < length - 1; i++) {
+    min = i;
+    for(int j = i + 1; j < length; j++) {
+      if(arr[j] < arr[min]) {
+        min = j;
+      }
+    }
+    exch(arr[min], arr[i]);
+  }
 }
 
 int main() {
 
-  Item array[1000];
+  Item arr[1000];
   int index = 0;
 
-  while(scanf("%d", &array[index]) != EOF) {
+  while(scanf("%d", &arr[index]) != EOF) {
     index++;
   }
   // CHAME A FUNÇÃO DE ORDENAÇÃO AQUI
-
+  selection(arr, index);
   /////////////////////////////////// 
 
   for(int i = 0; i < index; i++) {
-    printf("%d", array[i]);
+    printf("%d", arr[i]);
     if(i < index - 1) {
       printf(" ");
     }
