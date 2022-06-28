@@ -9,7 +9,7 @@ int main() {
     qtd++;
   }
 
-  printf("%d\n", qtd);
+  printf("%d\n", qtdudo bem você );
 
 	return 0;
 }
