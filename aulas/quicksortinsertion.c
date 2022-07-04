@@ -28,6 +28,11 @@ void quickSort(Item *arr, int l, int r) {
   exch(arr[r - 1], arr[(r - l) / 2 + 1]);
   cmpexch(arr[l], arr[r - 1]);
   cmpexch(arr[r - 1], arr[r]);
+
+  int j = separa(arr, l + 1, r - 1);
+
+  quickSort(arr, l, j - 1);
+  quickSort(arr, j + 1, r);
 }
 
 void insertionSort(Item *arr, int l, int r) {
