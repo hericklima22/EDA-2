@@ -34,6 +34,22 @@ void quickSort(Item *arr, int l, int r) {
     quickSort(arr, j+ 1, r);
 }
 
+
 int main() {
-    return 0;
+  int n;
+  scanf("%d", &n);
+
+  Item *arr = malloc(sizeof(Item) * n);
+
+  for(int i = 0; i < n; i++) {
+    scanf("%d", &arr[i]);
+  }
+
+  quickSort(arr, 0, n - 1);
+
+  for(int i = 0; i < n; i++) {
+    printf("%d%c", arr[i], (i < n - 1) ? ' ' : 0);
+  }
+  printf("\n");
+  return 0;
 }

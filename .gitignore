@@ -1,3 +1,5 @@
 prog
 *.o
 *.exe
+*.out
+*.in
