@@ -6,6 +6,13 @@
     "*.tsx": "typescriptreact",
     ".env.*": "dotenv",
     "*.jsx": "javascriptreact",
-    "typeinfo": "c"
+    "typeinfo": "c",
+    "string.h": "c",
+    "stdio.h": "c",
+    "array": "c",
+    "string_view": "c",
+    "initializer_list": "c",
+    "utility": "c",
+    "stdlib.h": "c"
   }
 }

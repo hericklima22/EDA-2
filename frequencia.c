@@ -55,7 +55,6 @@ int main() {
 	for(int i = 0; i < n; i++) {
 		scanf("%d", &num[i]);
 		arr[num[i]]++;
-		// printf("%d %d\n", arr[num[i]], num[i]);
 	}
 
 	for(int i = 0; i < n; i++) {
@@ -69,23 +68,5 @@ int main() {
 	}
 
 	printf("%d\n", presente);
-
-	// insertion(arr, 0, n);
-
-	// for(int i = 0; i < n; i++) {
-    //     printf("%d\t", arr[i]);
-	// }
-
-	// printf("\n");
-
-	// for(int i = 0; i < n; i++) {
-	// 	temp = search(arr, arr[i], i, n);
-	// 	printf("%d\t", temp);
-	// 	// if(temp != -1) presente++;
-	// }
-
-	// printf("%d\n", presente);
-
-
   return 0;
 }

@@ -11,20 +11,28 @@ typedef struct {
   long nota;
 } Semente;
 
+int separaSemente(Semente a, Semente b) {
+  if(a.nota == b.nota) return a.code < b.code;
+  else return a.nota < b.nota;
+}
+
 int separa(Semente *v, int l, int r) {
   int i = l - 1, j = r;
   Semente c = v[r];
 
   while(1) {
-    while(less(v[++i].nota, c.nota));
-    while(less(c.nota, v[--j].nota)) if(i == j) break;
+    while(separaSemente(v[++i], c));
+    while(separaSemente(c, v[--j])) if(i == j) break;
     if(i >= j) break;
     int selecao = (v[i].nota == c.nota) ? v[i].code < c.code : v[i].nota < c.nota;
     if(selecao) {
       exch(v[i], v[j]);
     }
   }
-  exch(v[i], v[r]);
+  int selecao = (v[i].nota == c.nota) ? v[i].code < c.code : v[i].nota < c.nota;
+  if(selecao) {
+    exch(v[i], v[r]);
+  }
   return i;
 }
 
@@ -83,30 +91,26 @@ void mergeSort(Semente *arr, int l, int r) {
   merge(arr, l, meio, r);
 }
 
+Semente sementes[10000000];
+
 int main() {
   int n, index = 0, size;
 
   scanf("%d", &n);
-  size = n;
-  Semente *sementes = malloc(sizeof(Semente) * (size * size));
+
 
   while(scanf("%ld %ld", &sementes[index].code, &sementes[index].nota) != EOF) {
     index++;
-    if(index == n - 1) {
-      size *= 2;
-      sementes = realloc(sementes, sizeof(Semente) * (size));
-    }
   }
 
   quickSelect(sementes, 0, index - 1, n);
-  mergeSort(sementes,0, n - 1);
+  mergeSort(sementes, 0, n - 1);
 
   printf("\n");
 
-  for(int i = 0; i < index; i++) {
+  for(int i = 0; i < n; i++) {
     printf("%ld %ld\n", sementes[i].code, sementes[i].nota);
   }
 
-  free(sementes);
   return 0;
 }
