@@ -48,6 +48,7 @@ void G_Insert(Graph G, Edge *E) {
 }
 
 static int pre[100000];
+static int conta_vertice;
 
 void dfs_r(Graph G, Edge *E) {
   int v = E -> v, w = E -> w;
@@ -56,6 +57,10 @@ void dfs_r(Graph G, Edge *E) {
   for(int i = 0; i < G.V; i++) {
     if(G.adj[w][i] == 1 && pre[i] == -1) {
       dfs_r(G, EDGE(w, i));
+      
+    }
+    if(G.adj[w][i] == 1) {
+      conta_vertice++;
     }
   }
 }
@@ -68,14 +73,16 @@ int search(Graph G) {
   int cont = 0;
 
   for(int i = 0; i < G.V; i++) {
+    conta_vertice = 1;
     if(pre[i] == -1) {
       cont++;
       dfs_r(G, EDGE(i, i));
+      printf("vertices = %d\n", conta_vertice);
     }
   }
-
   return cont;
 }
+
 
 int main() {
   int n;
@@ -89,11 +96,13 @@ int main() {
   while(scanf("%d %d", &v, &w) == 2) {
     G_Insert(*g, EDGE(v, w));
   }
-  // for(int i = 0; i < g -> V; i++) {
-  //   for(int j = 0; j < g -> V; j++)
-  //     printf("%d ", g->adj[i][j]);
-  //   printf("\n");
-  // }
+
+  for(int i = 0; i < n; i++){
+    for(int j = 0; j < n; j++)
+      printf("%d ", g -> adj[i][j]);
+    printf("\n");
+  }
+  printf("\n");
 
   printf("%d\n", search(*g));
 
